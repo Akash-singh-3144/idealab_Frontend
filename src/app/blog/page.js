@@ -65,11 +65,11 @@ export default function BlogPage() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {blogPosts.map((post, index) => (
-            <AnimatedCard key={post.id} delay={index * 0.15} className="p-0 overflow-hidden group flex flex-col h-full bg-white shadow-sm hover:shadow-lg border-slate-200 hover:border-blue-200 rounded-2xl">
+            <AnimatedCard key={post.id} delay={index * 0.15} className="p-0 overflow-hidden group flex flex-col h-full bg-white shadow-sm hover:shadow-lg border-slate-200 hover:border-blue-200 rounded-2xl w-full max-w-[340px] mx-auto">
               {/* Image Header */}
-              <div className="relative h-48 w-full overflow-hidden">
+              <div className="relative h-40 w-full overflow-hidden">
                 <Image 
                   src={`/image/${post.image}`} 
                   alt={post.title} 
@@ -78,31 +78,31 @@ export default function BlogPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-60"></div>
                 <div className="absolute top-3 left-3">
-                  <span className="px-3 py-1 bg-white/90 backdrop-blur-md text-[10px] font-bold text-blue-700 rounded-full border border-white shadow-sm uppercase tracking-wider">
+                  <span className="px-2 py-1 bg-white/90 backdrop-blur-md text-[9px] font-bold text-blue-700 rounded-full border border-white shadow-sm uppercase tracking-wider">
                     {post.category}
                   </span>
                 </div>
               </div>
               
               {/* Content */}
-              <div className="p-4 md:p-5 flex flex-col flex-grow">
-                <h3 className="text-lg md:text-xl font-bold font-outfit text-slate-800 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2 leading-snug">
+              <div className="p-4 flex flex-col flex-grow">
+                <h3 className="text-base md:text-lg font-bold font-outfit text-slate-800 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2 leading-snug">
                   {post.title}
                 </h3>
                 
-                <p className="text-slate-600 font-medium text-sm mb-4 flex-grow line-clamp-3 leading-relaxed">
+                <p className="text-slate-600 font-medium text-xs md:text-sm mb-4 flex-grow line-clamp-3 leading-relaxed">
                   {post.desc}
                 </p>
                 
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-between mt-auto text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                  <div className="flex items-center gap-4">
+                <div className="pt-3 border-t border-slate-100 flex items-center justify-between mt-auto text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                  <div className="flex items-center gap-3">
                     <span className="flex items-center gap-1.5"><User size={12} className="text-slate-400" /> {post.author}</span>
                     <span className="flex items-center gap-1.5"><CalendarDays size={12} className="text-slate-400" /> {post.date}</span>
                   </div>
                 </div>
                 
                 <div className="mt-4">
-                  <button className="text-blue-600 font-bold text-sm flex items-center gap-1.5 group/btn bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-full transition-colors border border-blue-100 w-fit">
+                  <button className="text-blue-600 font-bold text-xs flex items-center gap-1.5 group/btn bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-full transition-colors border border-blue-100 w-fit">
                     Read Article <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
                   </button>
                 </div>

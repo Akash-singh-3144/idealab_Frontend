@@ -133,14 +133,18 @@ export default function ContactPage() {
               ))}
             </div>
 
-            {/* Google Maps Placeholder */}
-            <div className="w-full flex-grow min-h-[180px] rounded-xl overflow-hidden glass border-white shadow-md relative mt-2 group">
-              <div className="absolute inset-0 bg-slate-200 flex items-center justify-center">
-                <div className="text-center group-hover:scale-105 transition-transform duration-500">
-                  <MapPin className="mx-auto h-8 w-8 text-slate-400 mb-1" />
-                  <p className="text-slate-500 text-xs font-bold border border-slate-300 rounded-full px-3 py-1 bg-slate-100 shadow-sm">Map Embed</p>
-                </div>
-              </div>
+            {/* Google Maps Embed */}
+            <div className="w-full flex-grow min-h-[250px] rounded-xl overflow-hidden glass border border-white shadow-md relative mt-2">
+              <iframe 
+                src="https://maps.google.com/maps?q=Madan%20Mohan%20Malaviya%20University%20of%20Technology,%20Gorakhpur,%20Uttar%20Pradesh,%20India&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen="" 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0 grayscale hover:grayscale-0 transition-all duration-700 ease-in-out"
+              ></iframe>
             </div>
             
           </motion.div>

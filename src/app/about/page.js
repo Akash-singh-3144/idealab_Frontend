@@ -40,32 +40,38 @@ export default function AboutPage() {
         </div>
 
         {/* Image / Content Split */}
-        <div className="flex flex-col lg:flex-row gap-6 items-center mb-10">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center mb-16">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="w-full lg:w-1/2"
+            className="w-full lg:w-5/12 flex justify-center lg:justify-end"
           >
-            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden glass p-1.5 border-white shadow-lg">
-               <Image src="/image/idealab2.webp" alt="Inside IDEALAB" fill className="object-cover rounded-xl" />
+            <div className="relative w-full max-w-[420px] aspect-[4/3] rounded-2xl overflow-hidden glass p-1.5 border-white shadow-xl shadow-blue-900/5 hover:shadow-2xl transition-all duration-500 group">
+               <Image src="/image/idealab.webp" alt="Inside IDEALAB" fill className="object-cover rounded-xl group-hover:scale-105 transition-transform duration-700" />
+               <div className="absolute inset-0 bg-blue-900/0 group-hover:bg-blue-900/10 transition-colors duration-500 rounded-xl pointer-events-none"></div>
             </div>
           </motion.div>
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="w-full lg:w-1/2"
+            className="w-full lg:w-7/12"
           >
-            <h2 className="text-2xl font-outfit font-bold text-slate-800 mb-4 flex items-center gap-2">
-              <Cog className="text-blue-600" size={24} /> What is IDEALAB?
+            <h2 className="text-2xl md:text-3xl font-outfit font-bold text-slate-800 mb-5 flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-blue-100 flex flex-col items-center justify-center text-blue-600 shadow-sm shrink-0">
+                <Cog size={22} className="animate-[spin_4s_linear_infinite]" />
+              </div>
+              What is IDEALAB?
             </h2>
-            <p className="text-slate-600 text-sm leading-relaxed font-medium mb-4">
-              The IDEALAB serves as a 24x7 creative hub encouraging students to experiment with core engineering concepts in a hands-on environment. It’s designed to transform the way learning happens—moving from theory to pure practical implementation.
-            </p>
-            <p className="text-slate-600 text-sm leading-relaxed font-medium mb-4">
-              Supported by AICTE, we provide world-class facilities and tools to faculty and students of all disciplines, enabling them to fabricate prototypes, build IoT solutions, and create market-ready products.
-            </p>
+            <div className="bg-white/70 backdrop-blur-md rounded-2xl p-6 border border-white shadow-sm hover:shadow-md transition-shadow duration-300">
+              <p className="text-slate-600 text-sm md:text-base leading-relaxed font-medium mb-4">
+                The IDEALAB serves as a <span className="text-blue-600 font-bold">24x7 creative hub</span> encouraging students to experiment with core engineering concepts in a hands-on environment. It’s designed to transform the way learning happens—moving from theory to pure practical implementation.
+              </p>
+              <p className="text-slate-600 text-sm md:text-base leading-relaxed font-medium">
+                Supported by <span className="text-slate-800 font-bold">AICTE</span>, we provide world-class facilities and tools to faculty and students of all disciplines, enabling them to fabricate prototypes, build IoT solutions, and create market-ready products.
+              </p>
+            </div>
           </motion.div>
         </div>
 
