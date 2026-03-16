@@ -76,7 +76,7 @@ export default function Home() {
             <div className="relative w-full aspect-square max-h-[450px] rounded-3xl overflow-hidden glass shadow-2xl shadow-blue-900/10 border-white p-2">
               <div className="absolute inset-0 bg-gradient-to-tr from-blue-100/50 to-transparent z-10 rounded-3xl pointer-events-none"></div>
               <Image 
-                src="/image/idea1.webp" 
+                src="/image/atal bhawan.png" 
                 alt="Students working at IDEALAB" 
                 fill 
                 className="object-cover rounded-2xl"
