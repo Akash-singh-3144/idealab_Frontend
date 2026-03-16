@@ -1,52 +1,116 @@
-export const metadata = { title: "Blog | AICTE IDEALab Network" };
+"use client";
+
+import { motion } from "framer-motion";
+import Image from "next/image";
+import AnimatedCard from "@/components/ui/AnimatedCard";
+import { ArrowRight, User, CalendarDays } from "lucide-react";
+
+const blogPosts = [
+  {
+    id: 1,
+    title: "The Future of 3D Printing in Education",
+    desc: "How rapid prototyping is transforming the way engineering students approach physical design and iterative development.",
+    image: "3dPrinter.webp",
+    author: "Dr. S. K. Soni",
+    date: "Oct 12, 2023",
+    category: "Technology"
+  },
+  {
+    id: 2,
+    title: "Building IoT Solutions for Smart Campuses",
+    desc: "A deep dive into the recent workshop held at IDEALAB focusing on LoRaWAN and embedded sensors for campus automation.",
+    image: "idea1.webp",
+    author: "Rahul Kumar",
+    date: "Nov 05, 2023",
+    category: "IoT"
+  },
+  {
+    id: 3,
+    title: "Advanced PCB Design Guidelines",
+    desc: "Best practices for routing multi-layer boards to ensure signal integrity and manufacturability using our in-house mill.",
+    image: "pcbBoard.png",
+    author: "Priya Singh",
+    date: "Dec 02, 2023",
+    category: "Electronics"
+  }
+];
 
 export default function BlogPage() {
-  const blogs = [
-    {
-      id: 1,
-      image: "/image/main.jpg",
-      title: "Inauguration of Advanced Prototyping Facility",
-      description: "Our new advanced prototyping facility is now open to students and faculty, featuring state-of-the-art equipment for rapid development."
-    },
-    {
-      id: 2,
-      image: "/image/department picture.png",
-      title: "Workshop on Embedded Systems",
-      description: "A comprehensive three-day workshop was conducted for engineering students focusing on modern embedded systems and IoT applications."
-    },
-    {
-      id: 3,
-      image: "/image/atal bhawan.png",
-      title: "IDEALab Network Expansion",
-      description: "The AICTE IDEALab network continues to expand, fostering innovation and hands-on learning across multiple institutions in the region."
-    }
-  ];
-
   return (
-    <div className="container mx-auto px-4 py-16 md:py-24">
-      <h1 className="text-4xl md:text-5xl font-extrabold text-brand-blue mb-12 text-center">
-        Our <span className="text-brand-orange">Blog</span>
-      </h1>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {blogs.map((blog) => (
-          <div key={blog.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col">
-            <div className="aspect-video relative overflow-hidden bg-gray-100">
-              <img 
-                src={blog.image} 
-                alt={blog.title}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500 relative z-10"
-              />
-            </div>
-            <div className="p-6 flex flex-col flex-grow">
-              <h2 className="text-2xl font-bold text-brand-blue mb-3">{blog.title}</h2>
-              <p className="text-gray-600 mb-4 flex-grow">{blog.description}</p>
-              <button className="text-brand-orange font-semibold hover:text-brand-blue transition-colors self-start mt-auto">
-                Read More &rarr;
-              </button>
-            </div>
-          </div>
-        ))}
+    <div className="pt-16 pb-8 min-h-screen bg-slate-50">
+      <div className="container mx-auto px-4">
+        
+        <div className="text-center max-w-3xl mx-auto mb-10 pt-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-block px-3 py-1 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold tracking-wide mb-3 shadow-sm"
+          >
+            Blog
+          </motion.div>
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-3xl md:text-5xl font-outfit font-extrabold text-slate-900 mb-3 drop-shadow-sm"
+          >
+            Insights & <span className="text-gradient">Stories</span>
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-slate-600 text-sm md:text-base font-medium leading-relaxed max-w-2xl mx-auto"
+          >
+            Read about the latest technological advancements, student achievements, and deep-dive tutorials from the IDEALAB community.
+          </motion.p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {blogPosts.map((post, index) => (
+            <AnimatedCard key={post.id} delay={index * 0.15} className="p-0 overflow-hidden group flex flex-col h-full bg-white shadow-sm hover:shadow-lg border-slate-200 hover:border-blue-200 rounded-2xl">
+              {/* Image Header */}
+              <div className="relative h-48 w-full overflow-hidden">
+                <Image 
+                  src={`/image/${post.image}`} 
+                  alt={post.title} 
+                  fill 
+                  className="object-cover group-hover:scale-105 transition-transform duration-700" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-60"></div>
+                <div className="absolute top-3 left-3">
+                  <span className="px-3 py-1 bg-white/90 backdrop-blur-md text-[10px] font-bold text-blue-700 rounded-full border border-white shadow-sm uppercase tracking-wider">
+                    {post.category}
+                  </span>
+                </div>
+              </div>
+              
+              {/* Content */}
+              <div className="p-4 md:p-5 flex flex-col flex-grow">
+                <h3 className="text-lg md:text-xl font-bold font-outfit text-slate-800 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2 leading-snug">
+                  {post.title}
+                </h3>
+                
+                <p className="text-slate-600 font-medium text-sm mb-4 flex-grow line-clamp-3 leading-relaxed">
+                  {post.desc}
+                </p>
+                
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between mt-auto text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                  <div className="flex items-center gap-4">
+                    <span className="flex items-center gap-1.5"><User size={12} className="text-slate-400" /> {post.author}</span>
+                    <span className="flex items-center gap-1.5"><CalendarDays size={12} className="text-slate-400" /> {post.date}</span>
+                  </div>
+                </div>
+                
+                <div className="mt-4">
+                  <button className="text-blue-600 font-bold text-sm flex items-center gap-1.5 group/btn bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-full transition-colors border border-blue-100 w-fit">
+                    Read Article <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+              </div>
+            </AnimatedCard>
+          ))}
+        </div>
+
       </div>
     </div>
   );
