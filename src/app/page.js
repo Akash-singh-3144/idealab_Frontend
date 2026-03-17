@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowRight, Cpu, Microscope, Wrench, Lightbulb, CheckCircle2 } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimatedCard from "@/components/ui/AnimatedCard";
+import AnnouncementsSidebar from "@/components/ui/AnnouncementsSidebar";
 import CountUp from "react-countup";
 
 export default function Home() {
@@ -145,31 +146,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-10 bg-white relative">
+      {/* Features & Announcements Section */}
+      <section className="py-12 bg-white relative">
         <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
         <div className="container mx-auto px-4">
-          <SectionHeading 
-            title="Core Capabilities" 
-            subtitle="Everything you need to build the future."
-            centered
-          />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
-            {[
-              { icon: <Cpu size={22} />, title: "Electronics & IoT", desc: "Design, fabricate, and test complex PCBs. Equipped with advanced oscilloscopes and soldering stations." },
-              { icon: <Wrench size={22} />, title: "Mechanical Prototyping", desc: "Access high-precision CNC routers, laser cutters, and power tools for robust component fabrication." },
-              { icon: <Microscope size={22} />, title: "Advanced Research", desc: "Dedicated spaces and advanced sensors for deep-tech research and product testing." }
-            ].map((feature, idx) => (
-              <AnimatedCard key={idx} delay={idx * 0.15} className="group hover:-translate-y-1 transition-transform duration-300">
-                <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4 border border-blue-100 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm">
-                  {feature.icon}
-                </div>
-                <h3 className="text-lg font-bold font-outfit text-slate-800 mb-2">{feature.title}</h3>
-                <p className="text-slate-600 text-xs font-medium leading-relaxed">{feature.desc}</p>
-              </AnimatedCard>
-            ))}
+          <div className="flex flex-col lg:flex-row gap-10">
+            {/* Left Side - Capabilities */}
+            <div className="lg:w-8/12">
+              <SectionHeading 
+                title="Core Capabilities" 
+                subtitle="Everything you need to build the future."
+              />
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-8 h-full">
+                {[
+                  { icon: <Cpu size={22} />, title: "Electronics & IoT", desc: "Design, fabricate, and test complex PCBs. Equipped with advanced oscilloscopes and soldering stations." },
+                  { icon: <Wrench size={22} />, title: "Mechanical Prototyping", desc: "Access high-precision CNC routers, laser cutters, and power tools for robust component fabrication." },
+                  { icon: <Microscope size={22} />, title: "Advanced Research", desc: "Dedicated spaces and advanced sensors for deep-tech research and product testing." }
+                ].map((feature, idx) => (
+                  <AnimatedCard key={idx} delay={idx * 0.15} className={`group hover:-translate-y-1 transition-transform duration-300 ${idx === 2 ? 'sm:col-span-2' : ''}`}>
+                    <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4 border border-blue-100 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+                      {feature.icon}
+                    </div>
+                    <h3 className="text-lg font-bold font-outfit text-slate-800 mb-2">{feature.title}</h3>
+                    <p className="text-slate-600 text-xs font-medium leading-relaxed">{feature.desc}</p>
+                  </AnimatedCard>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Side - Announcements */}
+            <div className="lg:w-4/12 flex flex-col pt-1">
+              <AnnouncementsSidebar />
+            </div>
           </div>
+
         </div>
       </section>
 

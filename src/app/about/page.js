@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimatedCard from "@/components/ui/AnimatedCard";
+import FacultySection from "@/components/ui/FacultySection";
 import { MoveRight, Target, Eye, Cog } from "lucide-react";
 
 export default function AboutPage() {
@@ -120,6 +121,10 @@ export default function AboutPage() {
         </div>
         
       </div>
+
+      {/* Faculties Section */}
+      <FacultySection />
+      
     </div>
   );
 }
