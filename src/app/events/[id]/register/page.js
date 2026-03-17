@@ -118,7 +118,7 @@ export default function EventRegistrationPage() {
 
   return (
     <div className="pt-16 pb-8 min-h-screen flex justify-center bg-slate-50">
-      <div className="container max-w-2xl px-4">
+      <div className="container max-w-2xl px-6 sm:px-10 lg:px-16 xl:px-24">
         
         <div className="mb-6 text-center">
           <motion.div

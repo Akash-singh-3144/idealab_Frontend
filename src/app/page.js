@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Cpu, Microscope, Wrench, Lightbulb, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Cpu, Microscope, Wrench, Lightbulb, CheckCircle2, Compass, Presentation, Rocket } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimatedCard from "@/components/ui/AnimatedCard";
 import AnnouncementsSidebar from "@/components/ui/AnnouncementsSidebar";
@@ -16,7 +16,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative pt-16 pb-12 md:pt-24 md:pb-16 overflow-hidden">
         
-        <div className="container mx-auto px-4 md:px-6 relative z-10 flex flex-col lg:flex-row items-center gap-8">
+        <div className="container mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 relative z-10 flex flex-col lg:flex-row items-center gap-8">
           
           <div className="w-full lg:w-1/2 text-center lg:text-left">
             <motion.div
@@ -106,7 +106,7 @@ export default function Home() {
 
       {/* Stats Counter Section */}
       <section className="py-12 bg-white relative border-y border-slate-100">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-6 sm:px-10 lg:px-16 xl:px-24">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-slate-100">
             <div className="flex flex-col items-center">
               <div className="text-4xl md:text-6xl font-outfit font-black text-slate-900 mb-2 tracking-tighter flex items-center justify-center">
@@ -149,7 +149,12 @@ export default function Home() {
       {/* Features & Announcements Section */}
       <section className="py-12 bg-white relative">
         <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-6 sm:px-10 lg:px-16 xl:px-24">
+          <SectionHeading 
+            title="Core Capabilities" 
+            subtitle="Everything you need to build the future."
+            centered
+          />
           
           <div className="flex flex-col lg:flex-row gap-10">
             {/* Left Side - Capabilities */}
@@ -187,7 +192,7 @@ export default function Home() {
 
       {/* Services Preview Section */}
       <section className="py-10 relative overflow-hidden bg-slate-50">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-6 sm:px-10 lg:px-16 xl:px-24">
           <div className="flex flex-col md:flex-row items-end justify-between mb-6 gap-4">
             <SectionHeading 
               title="State-of-the-Art Facilities" 
@@ -237,9 +242,118 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Journey / How It Works Section */}
+      <section className="py-16 md:py-24 bg-slate-50 relative border-y border-slate-200 overflow-hidden">
+        {/* Decorative Background Elements */}
+        <div className="absolute top-1/2 left-0 w-full h-px bg-slate-200 -z-10 hidden lg:block"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 -z-10 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-100/40 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 -z-10 pointer-events-none"></div>
+
+        <div className="container mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 relative z-10">
+          <SectionHeading 
+            title="How It Works" 
+            subtitle="From a spark of an idea to a market-ready product — here's how we take you through the full innovation lifecycle."
+            centered
+          />
+
+          <div className="mt-16 md:mt-20 relative">
+            {/* Connecting Line for Desktop */}
+            <div className="hidden lg:block absolute top-[56px] left-[10%] right-[10%] h-[3px] bg-gradient-to-r from-blue-100 via-blue-300 to-blue-100 rounded-full shadow-inner z-0"></div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10 lg:gap-4 relative z-10">
+              {[
+                { 
+                  icon: <Lightbulb size={32} />, 
+                  title: "Ideate", 
+                  desc: "Discover a real problem. Brainstorm solutions with our Design Thinking framework.",
+                  color: "from-amber-400 to-orange-500",
+                  bg: "bg-white",
+                  text: "text-orange-500",
+                  shadow: "shadow-orange-500/10 hover:shadow-orange-500/30"
+                },
+                { 
+                  icon: <Compass size={32} />, 
+                  title: "Plan", 
+                  desc: "Validate your concept, map your tech stack, and define your MVP scope.",
+                  color: "from-blue-400 to-blue-600",
+                  bg: "bg-white",
+                  text: "text-blue-500",
+                  shadow: "shadow-blue-500/10 hover:shadow-blue-500/30"
+                },
+                { 
+                  icon: <Wrench size={32} />, 
+                  title: "Build", 
+                  desc: "Get hands-on in our labs. Fabricate, code, test, and iterate rapidly.",
+                  color: "from-indigo-400 to-indigo-600",
+                  bg: "bg-white",
+                  text: "text-indigo-500",
+                  shadow: "shadow-indigo-500/10 hover:shadow-indigo-500/30"
+                },
+                { 
+                  icon: <Presentation size={32} />, 
+                  title: "Pitch", 
+                  desc: "Present to a panel of investors, mentors, and government stakeholders.",
+                  color: "from-purple-400 to-purple-600",
+                  bg: "bg-white",
+                  text: "text-purple-500",
+                  shadow: "shadow-purple-500/10 hover:shadow-purple-500/30"
+                },
+                { 
+                  icon: <Rocket size={32} />, 
+                  title: "Launch", 
+                  desc: "Get incubated, receive grant funding, and take your innovation to market.",
+                  color: "from-emerald-400 to-emerald-600",
+                  bg: "bg-white",
+                  text: "text-emerald-500",
+                  shadow: "shadow-emerald-500/10 hover:shadow-emerald-500/30"
+                }
+              ].map((step, idx) => (
+                <motion.div 
+                  key={idx}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: idx * 0.15, type: "spring", bounce: 0.4 }}
+                  className="relative flex flex-col items-center text-center group h-full"
+                >
+                  {/* Step Number Badge */}
+                  <div className={`absolute -top-3 -right-2 lg:right-auto lg:left-1/2 lg:-translate-x-12 w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs font-bold z-30 shadow-lg border-2 border-white group-hover:scale-110 transition-transform duration-300`}>
+                    {idx + 1}
+                  </div>
+                  
+                  {/* Icon Container */}
+                  <div className={`w-28 h-28 rounded-3xl flex items-center justify-center mb-6 relative z-20 transition-all duration-500 group-hover:-translate-y-3 shadow-xl ${step.shadow} ${step.bg}`}>
+                    {/* Background gradient on hover */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl`}></div>
+                    
+                    {/* Inner styling */}
+                    <div className="absolute inset-2 border border-slate-100 rounded-2xl group-hover:border-white/20 transition-colors duration-500"></div>
+                    
+                    {/* Icon */}
+                    <div className={`relative z-20 ${step.text} group-hover:text-white transition-colors duration-500 group-hover:scale-110 group-hover:rotate-3`}>
+                      {step.icon}
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="bg-white/80 backdrop-blur-md p-5 rounded-2xl border border-white shadow-sm group-hover:shadow-md transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-white w-full max-w-[280px] relative z-20 flex-1 flex flex-col">
+                    <h3 className="text-xl font-outfit font-bold text-slate-800 mb-2 group-hover:text-blue-600 transition-colors">
+                      {step.title}
+                    </h3>
+                    <p className="text-[13px] text-slate-600 font-medium leading-relaxed">
+                      {step.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-10 relative overflow-hidden bg-white">
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 relative z-10">
           <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl p-6 md:p-8 text-center shadow-2xl relative overflow-hidden">
             {/* Decorative background shapes for CTA */}
             <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>

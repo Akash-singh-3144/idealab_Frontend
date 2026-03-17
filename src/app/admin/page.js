@@ -92,7 +92,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="pt-16 pb-8 min-h-screen bg-slate-50">
-      <div className="container mx-auto px-4 max-w-6xl">
+      <div className="container mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 max-w-6xl">
         
         <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>

@@ -29,7 +29,7 @@ export default function EventsPage() {
 
   return (
     <div className="pt-16 pb-8 min-h-screen bg-slate-50">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 sm:px-10 lg:px-16 xl:px-24">
         
         <div className="text-center max-w-3xl mx-auto mb-10 relative">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-cyan-200/40 rounded-full blur-[100px] -z-10"></div>

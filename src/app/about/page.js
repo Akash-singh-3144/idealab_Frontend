@@ -4,14 +4,13 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimatedCard from "@/components/ui/AnimatedCard";
-import FacultySection from "@/components/ui/FacultySection";
-import { MoveRight, Target, Eye, Cog } from "lucide-react";
+import { MoveRight, Target, Eye, Cog, Zap, Users, IndianRupee, Handshake, Trophy, Globe, Wrench, Bot, Cpu, CircuitBoard, Glasses, TestTube, PenTool, Mic } from "lucide-react";
 
 export default function AboutPage() {
   return (
     <div className="pt-16 pb-8 min-h-screen relative overflow-hidden bg-slate-50">
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="container mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 relative z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 relative pt-4">
@@ -77,7 +76,7 @@ export default function AboutPage() {
         </div>
 
         {/* Vision & Mission Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-20">
           <AnimatedCard delay={0.1} className="relative overflow-hidden group p-4">
             <div className="absolute top-0 right-0 p-4 opacity-10 text-blue-600 group-hover:scale-110 transition-transform">
               <Eye size={80} />
@@ -119,6 +118,134 @@ export default function AboutPage() {
             </div>
           </AnimatedCard>
         </div>
+
+        {/* Why IDEALAB Section */}
+        <section className="mb-20">
+          <SectionHeading 
+            title="Built for Builders"
+            subtitle="AICTE Idea Lab is a state-of-the-art innovation hub providing access to tools, mentorship, and a vibrant community to turn ideas into reality."
+            centered={true}
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+            {/* Feature 1 */}
+            <AnimatedCard delay={0.1} className="flex items-center gap-4 p-5 hover:-translate-y-1 transition-transform group">
+              <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                <Zap size={24} />
+              </div>
+              <h3 className="font-outfit font-bold text-slate-800 text-lg leading-tight group-hover:text-blue-700 transition-colors">World-Class<br/>Equipment</h3>
+            </AnimatedCard>
+            {/* Feature 2 */}
+            <AnimatedCard delay={0.2} className="flex items-center gap-4 p-5 hover:-translate-y-1 transition-transform group">
+              <div className="w-12 h-12 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center shrink-0 border border-cyan-100 group-hover:bg-cyan-600 group-hover:text-white transition-colors">
+                <Users size={24} />
+              </div>
+              <h3 className="font-outfit font-bold text-slate-800 text-lg leading-tight group-hover:text-cyan-700 transition-colors">Expert<br/>Mentorship</h3>
+            </AnimatedCard>
+            {/* Feature 3 */}
+            <AnimatedCard delay={0.3} className="flex items-center gap-4 p-5 hover:-translate-y-1 transition-transform group">
+              <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-100 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                <IndianRupee size={24} />
+              </div>
+              <h3 className="font-outfit font-bold text-slate-800 text-lg leading-tight group-hover:text-emerald-700 transition-colors">Funding &<br/>Grants</h3>
+            </AnimatedCard>
+            {/* Feature 4 */}
+            <AnimatedCard delay={0.4} className="flex items-center gap-4 p-5 hover:-translate-y-1 transition-transform group">
+              <div className="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 border border-purple-100 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                <Handshake size={24} />
+              </div>
+              <h3 className="font-outfit font-bold text-slate-800 text-lg leading-tight group-hover:text-purple-700 transition-colors">Industry<br/>Partnerships</h3>
+            </AnimatedCard>
+            {/* Feature 5 */}
+            <AnimatedCard delay={0.5} className="flex items-center gap-4 p-5 hover:-translate-y-1 transition-transform group">
+              <div className="w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center shrink-0 border border-orange-100 group-hover:bg-orange-600 group-hover:text-white transition-colors">
+                <Trophy size={24} />
+              </div>
+              <h3 className="font-outfit font-bold text-slate-800 text-lg leading-tight group-hover:text-orange-700 transition-colors">National<br/>Competitions</h3>
+            </AnimatedCard>
+            {/* Feature 6 */}
+            <AnimatedCard delay={0.6} className="flex items-center gap-4 p-5 hover:-translate-y-1 transition-transform group">
+              <div className="w-12 h-12 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center shrink-0 border border-rose-100 group-hover:bg-rose-600 group-hover:text-white transition-colors">
+                <Globe size={24} />
+              </div>
+              <h3 className="font-outfit font-bold text-slate-800 text-lg leading-tight group-hover:text-rose-700 transition-colors">Global<br/>Exposure</h3>
+            </AnimatedCard>
+          </div>
+        </section>
+
+        {/* Our Facilities Section */}
+        <section className="mb-20">
+          <SectionHeading 
+            title="8 Specialized Labs"
+            subtitle="Eight dedicated innovation zones equipped with the latest technology and tools."
+            centered={true}
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
+            {/* Lab 1 */}
+            <AnimatedCard delay={0.1} className="flex flex-col h-full border border-slate-200 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 p-5 group">
+               <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                 <Wrench size={20} />
+               </div>
+               <h3 className="font-outfit font-bold text-slate-800 text-lg mb-2">Fabrication Lab</h3>
+               <p className="text-slate-500 font-medium text-xs leading-relaxed mt-auto">3D printers, laser cutters, CNC machines & metal casting tools</p>
+            </AnimatedCard>
+            {/* Lab 2 */}
+            <AnimatedCard delay={0.2} className="flex flex-col h-full border border-slate-200 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 p-5 group">
+               <div className="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                 <Bot size={20} />
+               </div>
+               <h3 className="font-outfit font-bold text-slate-800 text-lg mb-2">Robotics Arena</h3>
+               <p className="text-slate-500 font-medium text-xs leading-relaxed mt-auto">Industrial robot arms, drone testing space & autonomous vehicle track</p>
+            </AnimatedCard>
+            {/* Lab 3 */}
+            <AnimatedCard delay={0.3} className="flex flex-col h-full border border-slate-200 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 p-5 group">
+               <div className="w-10 h-10 rounded-lg bg-cyan-50 text-cyan-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                 <Cpu size={20} />
+               </div>
+               <h3 className="font-outfit font-bold text-slate-800 text-lg mb-2">Computing Hub</h3>
+               <p className="text-slate-500 font-medium text-xs leading-relaxed mt-auto">High-performance GPU clusters for AIML training & cloud computing</p>
+            </AnimatedCard>
+            {/* Lab 4 */}
+            <AnimatedCard delay={0.4} className="flex flex-col h-full border border-slate-200 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 p-5 group">
+               <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                 <CircuitBoard size={20} />
+               </div>
+               <h3 className="font-outfit font-bold text-slate-800 text-lg mb-2">Electronics Bay</h3>
+               <p className="text-slate-500 font-medium text-xs leading-relaxed mt-auto">Oscilloscopes, PCB fabrication, soldering stations & IoT components</p>
+            </AnimatedCard>
+            {/* Lab 5 */}
+            <AnimatedCard delay={0.5} className="flex flex-col h-full border border-slate-200 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 p-5 group">
+               <div className="w-10 h-10 rounded-lg bg-fuchsia-50 text-fuchsia-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                 <Glasses size={20} />
+               </div>
+               <h3 className="font-outfit font-bold text-slate-800 text-lg mb-2">AR/VR Studio</h3>
+               <p className="text-slate-500 font-medium text-xs leading-relaxed mt-auto">Meta Quest, HTC Vive, spatial computing & holographic displays</p>
+            </AnimatedCard>
+            {/* Lab 6 */}
+            <AnimatedCard delay={0.6} className="flex flex-col h-full border border-slate-200 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 p-5 group">
+               <div className="w-10 h-10 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                 <TestTube size={20} />
+               </div>
+               <h3 className="font-outfit font-bold text-slate-800 text-lg mb-2">Biotech Lab</h3>
+               <p className="text-slate-500 font-medium text-xs leading-relaxed mt-auto">Biomedical research equipment, microscopes & biomaterial testing</p>
+            </AnimatedCard>
+            {/* Lab 7 */}
+            <AnimatedCard delay={0.7} className="flex flex-col h-full border border-slate-200 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 p-5 group">
+               <div className="w-10 h-10 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                 <PenTool size={20} />
+               </div>
+               <h3 className="font-outfit font-bold text-slate-800 text-lg mb-2">Design Studio</h3>
+               <p className="text-slate-500 font-medium text-xs leading-relaxed mt-auto">Graphic tablets, high-resolution monitors & product design software</p>
+            </AnimatedCard>
+            {/* Lab 8 */}
+            <AnimatedCard delay={0.8} className="flex flex-col h-full border border-slate-200 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 p-5 group">
+               <div className="w-10 h-10 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                 <Mic size={20} />
+               </div>
+               <h3 className="font-outfit font-bold text-slate-800 text-lg mb-2">Presentation Hall</h3>
+               <p className="text-slate-500 font-medium text-xs leading-relaxed mt-auto">Pitch arena, investor demo days & collaborative whiteboard space</p>
+            </AnimatedCard>
+          </div>
+        </section>
         
       </div>
 

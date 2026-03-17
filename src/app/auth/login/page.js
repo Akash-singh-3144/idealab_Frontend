@@ -37,7 +37,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center pt-16 pb-8 px-4 bg-slate-50 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center pt-16 pb-8 px-6 sm:px-10 lg:px-16 xl:px-24 bg-slate-50 relative overflow-hidden">
       
       {/* Background Blobs */}
       <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-200/50 rounded-full blur-[80px] -z-10 mix-blend-multiply"></div>
