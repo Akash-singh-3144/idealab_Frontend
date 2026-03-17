@@ -11,7 +11,7 @@ export default function Footer() {
       {/* Top Banner */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 max-w-4xl h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-50"></div>
 
-      <div className="container mx-auto px-4 md:px-6 py-10">
+      <div className="container mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           
           {/* Brand Column */}

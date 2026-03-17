@@ -41,7 +41,7 @@ export default function SignupPage() {
   const inputClasses = (err) => `w-full bg-slate-50 border ${err ? 'border-red-300 focus:border-red-500' : 'border-slate-200 focus:border-blue-500 hover:border-blue-300'} rounded-lg py-2 px-3 text-sm text-slate-900 outline-none transition-all shadow-sm focus:shadow-md focus:shadow-blue-500/10 font-medium placeholder:text-slate-400`;
 
   return (
-    <div className="min-h-screen flex items-center justify-center pt-16 pb-8 px-4 bg-slate-50 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center pt-16 pb-8 px-6 sm:px-10 lg:px-16 xl:px-24 bg-slate-50 relative overflow-hidden">
       
       {/* Background Blobs */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-200/30 rounded-full blur-[80px] -z-10"></div>

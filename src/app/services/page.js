@@ -38,7 +38,7 @@ export default function ServicesPage() {
   return (
     <div className="pt-16 pb-8 min-h-screen relative overflow-hidden bg-slate-50">
       
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="container mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 relative z-10">
         
         <div className="text-center max-w-2xl mx-auto mb-10 pt-4">
           <motion.div
