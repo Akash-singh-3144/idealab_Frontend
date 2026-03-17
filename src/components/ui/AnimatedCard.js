@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { cn } from "@/utils/cn"; // Need to create this utility or just use clsx and tailwind-merge
+import TiltCard from "./TiltCard";
 
 export default function AnimatedCard({ children, className, delay = 0 }) {
   return (
@@ -10,9 +10,10 @@ export default function AnimatedCard({ children, className, delay = 0 }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-20px" }}
       transition={{ duration: 0.4, delay }}
-      className={`glass-card p-4 rounded-2xl ${className || ""}`}
     >
-      {children}
+      <TiltCard className={`glass-card p-3 rounded-2xl ${className || ""}`}>
+        {children}
+      </TiltCard>
     </motion.div>
   );
 }

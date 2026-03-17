@@ -31,6 +31,9 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Hide Navbar on admin routes
+  if (pathname?.startsWith("/admin")) return null;
+
   return (
     <>
       <header
@@ -42,7 +45,7 @@ export default function Navbar() {
           
           {/* Logos & Tagline */}
           <div className="flex items-center gap-4">
-            <div className="hidden sm:flex items-center relative w-12 h-12">
+            <div className="hidden sm:flex items-center relative w-16 h-16">
               <Image src="/image/aictelogo.png" alt="AICTE Logo" fill className="object-contain" />
             </div>
             
@@ -51,7 +54,7 @@ export default function Navbar() {
                 IDEALAB
               </span>
               <span className="text-[9px] md:text-xs text-slate-500 uppercase tracking-widest hidden sm:block font-medium">
-                Madan Mohan Malaviya University
+                Madan Mohan Malaviya University of Technology
               </span>
             </div>
             

@@ -1,17 +1,37 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useForm } from "react-hook-form";
-import { Send, MapPin, Phone, Mail, Clock, Loader2 } from "lucide-react";
+import { Send, MapPin, Phone, Mail, Clock, Loader2, AlertCircle, CheckCircle2 } from "lucide-react";
 import AnimatedCard from "@/components/ui/AnimatedCard";
+import api from "@/services/api";
+import { useState } from "react";
 
 export default function ContactPage() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState({ type: "", message: "" });
 
-  const onSubmit = (data) => {
-    // Implement contact logic later
-    console.log(data);
-    alert("Message sent successfully!");
+  const onSubmit = async (data) => {
+    setLoading(true);
+    setStatus({ type: "", message: "" });
+    try {
+      const res = await api.post("/contact", data);
+      if (res.data.success) {
+        setStatus({ type: "success", message: "Message sent! We'll get back to you soon." });
+        reset();
+      } else {
+        setStatus({ type: "error", message: res.data.message || "Failed to send message." });
+      }
+    } catch (error) {
+      console.error("Contact Form Error:", error);
+      setStatus({ 
+        type: "error", 
+        message: error.response?.data?.message || "Something went wrong. Please try again." 
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const contactDetails = [
@@ -55,6 +75,24 @@ export default function ContactPage() {
           >
             <h2 className="text-xl font-bold font-outfit text-slate-800 mb-6">Send us a Message</h2>
             
+            <AnimatePresence>
+              {status.message && (
+                <motion.div 
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className={`mb-6 p-4 rounded-xl flex items-center gap-3 border shadow-sm ${
+                    status.type === 'success' 
+                      ? 'bg-emerald-50 border-emerald-100 text-emerald-700' 
+                      : 'bg-rose-50 border-rose-100 text-rose-700'
+                  }`}
+                >
+                  {status.type === 'success' ? <CheckCircle2 size={18} /> : <AlertCircle size={18} />}
+                  <p className="font-bold text-sm">{status.message}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+            
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                  <div className="space-y-1.5">
@@ -96,12 +134,12 @@ export default function ContactPage() {
                    {...register("message", { required: true })} 
                  ></textarea>
               </div>
-
               <button
                 type="submit"
-                className="w-full py-3 mt-2 rounded-lg text-sm font-bold tracking-wide text-white bg-blue-600 hover:bg-blue-700 transition-all shadow-md shadow-blue-600/30 hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2"
+                disabled={loading}
+                className="w-full py-3 mt-2 rounded-lg text-sm font-bold tracking-wide text-white bg-blue-600 hover:bg-blue-700 transition-all shadow-md shadow-blue-600/30 hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Send Message <Send size={16} />
+                {loading ? <><Loader2 size={16} className="animate-spin" /> Sending...</> : <>{status.type === 'success' ? 'Sent!' : 'Send Message'} <Send size={16} /></>}
               </button>
             </form>
           </motion.div>

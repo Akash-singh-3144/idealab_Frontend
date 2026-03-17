@@ -14,17 +14,18 @@ export default function LoginPage() {
   const router = useRouter();
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = async (data) => {
     try {
       setLoading(true);
       setErrorMsg("");
-      const res = await login(data.email, data.password);
+      const res = await login(data.rollNo, data.password);
       if (res.success) {
         if (res.user.role === 'admin') {
           router.push("/admin");
         } else {
-          router.push("/events");
+          router.push("/");
         }
       } else {
         setErrorMsg(res.message);
@@ -65,12 +66,12 @@ export default function LoginPage() {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="space-y-1">
-            <label className="text-xs font-bold text-slate-700 ml-1">Email Address</label>
+            <label className="text-xs font-bold text-slate-700 ml-1">University Roll Number</label>
             <input 
-              type="email" 
-              placeholder="you@mmmut.ac.in"
+              type="text" 
+              placeholder="e.g. 2021000000"
               className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-3 text-slate-900 text-sm focus:border-blue-500 hover:border-blue-300 outline-none transition-all shadow-sm focus:shadow-md focus:shadow-blue-500/10 font-medium placeholder:text-slate-400" 
-              {...register("email", { required: true })} 
+              {...register("rollNo", { required: true })} 
             />
           </div>
 
@@ -79,12 +80,25 @@ export default function LoginPage() {
                <label className="text-xs font-bold text-slate-700">Password</label>
                <a href="#" className="text-[10px] font-bold text-blue-600 hover:text-blue-700 transition-colors">Forgot?</a>
             </div>
-            <input 
-              type="password" 
-              placeholder="••••••••"
-              className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-3 text-slate-900 text-sm focus:border-blue-500 hover:border-blue-300 outline-none transition-all shadow-sm focus:shadow-md focus:shadow-blue-500/10 font-medium placeholder:text-slate-400" 
-              {...register("password", { required: true })} 
-            />
+            <div className="relative">
+              <input 
+                type={showPassword ? "text" : "password"} 
+                placeholder="••••••••"
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-3 pr-10 text-slate-900 text-sm focus:border-blue-500 hover:border-blue-300 outline-none transition-all shadow-sm focus:shadow-md focus:shadow-blue-500/10 font-medium placeholder:text-slate-400" 
+                {...register("password", { required: true })} 
+              />
+              <button 
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
+              >
+                {showPassword ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                )}
+              </button>
+            </div>
           </div>
 
           <button

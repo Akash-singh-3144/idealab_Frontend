@@ -6,6 +6,7 @@ import Link from "next/link";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimatedCard from "@/components/ui/AnimatedCard";
 import { CheckCircle2, ArrowRight } from "lucide-react";
+import TiltCard from "@/components/ui/TiltCard";
 
 export default function ServicesPage() {
   const services = [
@@ -67,58 +68,59 @@ export default function ServicesPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {services.map((service, index) => (
-            <motion.div 
-              key={service.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative bg-white/80 backdrop-blur-xl rounded-2xl p-6 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 border border-white/60 hover:border-blue-100 flex flex-col h-full overflow-hidden w-full lg:max-w-sm mx-auto"
-            >
-              {/* Decorative background shape */}
-              <div className={`absolute -right-16 -top-16 w-40 h-40 bg-${service.color}-100 rounded-full blur-3xl opacity-0 group-hover:opacity-60 transition-opacity duration-700`}></div>
-              
-              {/* Image Card */}
-              <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-6 shadow-md group-hover:shadow-lg transition-all duration-300">
-                 <Image 
-                   src={`/image/${service.image}`} 
-                   alt={service.title} 
-                   fill 
-                   className="object-cover group-hover:scale-110 group-hover:rotate-1 transition-transform duration-700 ease-out" 
-                 />
-                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
-                 
-                 <div className="absolute bottom-3 left-3 bg-white/10 backdrop-blur-md px-3 py-1 rounded-lg border border-white/20 shadow-sm text-xs font-bold text-white tracking-widest">
-                   0{index + 1}
-                 </div>
-              </div>
-
-              <div className="flex-1 flex flex-col relative z-10 w-full">
-                <h2 className="text-xl md:text-2xl font-outfit font-bold text-slate-800 mb-3 group-hover:text-blue-600 transition-colors duration-300">{service.title}</h2>
-                <p className="text-slate-600 text-sm leading-relaxed font-medium mb-6 flex-1">
-                  {service.desc}
-                </p>
+            <TiltCard key={service.id} className="h-full" scale={1.05}>
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group relative bg-white/80 backdrop-blur-xl rounded-2xl p-6 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 border border-white/60 hover:border-blue-100 flex flex-col h-full overflow-hidden w-full lg:max-w-sm mx-auto"
+              >
+                {/* Decorative background shape */}
+                <div className={`absolute -right-16 -top-16 w-40 h-40 bg-${service.color}-100 rounded-full blur-3xl opacity-0 group-hover:opacity-60 transition-opacity duration-700`}></div>
                 
-                <div className="flex flex-col gap-2.5 mb-8">
-                  {service.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5">
-                      <CheckCircle2 className={`text-${service.color}-500 shrink-0 mt-0.5`} size={16} />
-                      <span className="text-slate-700 font-semibold text-sm">{feature}</span>
-                    </div>
-                  ))}
+                {/* Image Card */}
+                <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-6 shadow-md group-hover:shadow-lg transition-all duration-300">
+                   <Image 
+                     src={`/image/${service.image}`} 
+                     alt={service.title} 
+                     fill 
+                     className="object-cover group-hover:scale-110 group-hover:rotate-1 transition-transform duration-700 ease-out" 
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
+                   
+                   <div className="absolute bottom-3 left-3 bg-white/10 backdrop-blur-md px-3 py-1 rounded-lg border border-white/20 shadow-sm text-xs font-bold text-white tracking-widest">
+                     0{index + 1}
+                   </div>
                 </div>
 
-                <div className="mt-auto pt-5 border-t border-slate-100">
-                  <Link href="/auth/signup" className={`flex items-center justify-between w-full group/btn text-${service.color}-600 text-sm font-bold hover:text-${service.color}-700 transition-colors`}>
-                    <span className="tracking-wide uppercase text-xs">Book Equipment</span>
-                    <div className={`w-8 h-8 rounded-full bg-${service.color}-50 flex items-center justify-center group-hover/btn:bg-${service.color}-100 group-hover/btn:scale-110 transition-all duration-300 shadow-sm`}>
-                      <ArrowRight size={14} />
-                    </div>
-                  </Link>
-                </div>
-              </div>
+                <div className="flex-1 flex flex-col relative z-10 w-full">
+                  <h2 className="text-xl md:text-2xl font-outfit font-bold text-slate-800 mb-3 group-hover:text-blue-600 transition-colors duration-300">{service.title}</h2>
+                  <p className="text-slate-600 text-sm leading-relaxed font-medium mb-6 flex-1">
+                    {service.desc}
+                  </p>
+                  
+                  <div className="flex flex-col gap-2.5 mb-8">
+                    {service.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-2.5">
+                        <CheckCircle2 className={`text-${service.color}-500 shrink-0 mt-0.5`} size={16} />
+                        <span className="text-slate-700 font-semibold text-sm">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
 
-            </motion.div>
+                  <div className="mt-auto pt-5 border-t border-slate-100">
+                    <Link href="/auth/signup" className={`flex items-center justify-between w-full group/btn text-${service.color}-600 text-sm font-bold hover:text-${service.color}-700 transition-colors`}>
+                      <span className="tracking-wide uppercase text-xs">Book Equipment</span>
+                      <div className={`w-8 h-8 rounded-full bg-${service.color}-50 flex items-center justify-center group-hover/btn:bg-${service.color}-100 group-hover/btn:scale-110 transition-all duration-300 shadow-sm`}>
+                        <ArrowRight size={14} />
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+
+              </motion.div>
+            </TiltCard>
           ))}
         </div>
 

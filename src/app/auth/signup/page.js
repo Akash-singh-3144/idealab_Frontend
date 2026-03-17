@@ -7,15 +7,25 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
 import { UserPlus, Loader2, AlertCircle } from "lucide-react";
+import { useEffect } from "react";
+
+const branches = ["CSE", "IT", "ECE", "ECE-IOT", "ME", "CE", "CHE", "EE"];
 
 export default function SignupPage() {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const { signup } = useAuth();
+  const { signup, loading: authLoading } = useAuth();
   const router = useRouter();
+
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
-  const branches = ["CSE", "IT", "ECE", "ECE-IOT", "ME", "CE", "CHE", "EE"];
+  useEffect(() => {
+    console.log("SignupPage: Component Mounted", {
+      path: window.location.pathname,
+      authLoading
+    });
+  }, [authLoading]);
 
   const onSubmit = async (data) => {
     try {
@@ -141,12 +151,25 @@ export default function SignupPage() {
 
             <div className="space-y-1">
               <label className="text-xs font-bold text-slate-700 ml-1">Password <span className="text-red-500">*</span></label>
-              <input 
-                type="password" 
-                placeholder="••••••••"
-                className={inputClasses(errors.password)} 
-                {...register("password", { required: true, minLength: 6 })} 
-              />
+              <div className="relative">
+                <input 
+                  type={showPassword ? "text" : "password"} 
+                  placeholder="••••••••"
+                  className={`${inputClasses(errors.password)} pr-10`} 
+                  {...register("password", { required: true, minLength: 6 })} 
+                />
+                <button 
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
+                >
+                  {showPassword ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                  ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  )}
+                </button>
+              </div>
             </div>
           </div>
 

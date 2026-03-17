@@ -68,8 +68,23 @@ export default function EventsPage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {events.map((event, index) => (
-              <AnimatedCard key={event._id} delay={index * 0.1} className="flex flex-col h-full border border-slate-200 shadow-sm hover:shadow-lg hover:shadow-cyan-500/10 p-4">
-                <div className="flex-grow">
+              <AnimatedCard key={event._id} delay={index * 0.1} className="flex flex-col h-full border border-slate-200 shadow-sm hover:shadow-lg hover:shadow-cyan-500/10 transition-all overflow-hidden group">
+                <div className="h-44 bg-slate-100 relative overflow-hidden shrink-0">
+                  {event.image ? (
+                    <img src={event.image} alt={event.eventName} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center text-slate-300">
+                       <CalendarIcon size={40} strokeWidth={1} />
+                    </div>
+                  )}
+                  <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg shadow-sm">
+                    <div className="flex items-center gap-1.5 text-[10px] font-black text-slate-800 uppercase tracking-widest">
+                       <CalendarIcon size={12} className="text-blue-600" />
+                       {new Date(event.eventDate).toLocaleDateString('en-US', { day: 'numeric', month: 'short' })}
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4 flex-grow flex flex-col">
                   <h3 className="text-lg md:text-xl font-outfit font-bold text-slate-800 mb-2 line-clamp-2 leading-snug">{event.eventName}</h3>
                   <div className="space-y-2 mb-4 text-xs text-slate-600 font-semibold">
                     <div className="flex items-center gap-2">
@@ -83,7 +98,7 @@ export default function EventsPage() {
                     </div>
                     <div className="flex items-center gap-2">
                        <MapPin size={14} className="text-blue-400" />
-                       <span>IDEALAB</span>
+                       <span className="truncate">{event.location || "IDEALAB"}</span>
                     </div>
                   </div>
                   <p className="text-slate-500 font-medium text-xs md:text-sm line-clamp-3 mb-4 leading-relaxed">

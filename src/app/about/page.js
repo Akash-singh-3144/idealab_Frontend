@@ -5,6 +5,7 @@ import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimatedCard from "@/components/ui/AnimatedCard";
 import { MoveRight, Target, Eye, Cog, Zap, Users, IndianRupee, Handshake, Trophy, Globe, Wrench, Bot, Cpu, CircuitBoard, Glasses, TestTube, PenTool, Mic } from "lucide-react";
+import FacultySection from "@/components/ui/FacultySection";
 
 export default function AboutPage() {
   return (

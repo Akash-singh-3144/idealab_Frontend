@@ -33,11 +33,11 @@ export const AuthProvider = ({ children }) => {
       const { data } = await api.post("/auth/login", { rollNo, password });
       if (data.success) {
         setUser(data.user);
-        if (data.user.role === "admin") {
-          router.push("/admin");
-        } else {
-          router.push("/");
-        }
+        // if (data.user.role === "admin") {
+        //   router.push("/admin");
+        // } else {
+        //   router.push("/");
+        // }
       }
       return data;
     } catch (err) {
