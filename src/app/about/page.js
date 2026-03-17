@@ -248,6 +248,10 @@ export default function AboutPage() {
         </section>
         
       </div>
+
+      {/* Faculties Section */}
+      <FacultySection />
+      
     </div>
   );
 }
